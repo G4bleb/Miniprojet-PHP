@@ -34,7 +34,7 @@ CREATE TABLE `cambrure` (
   `yintra` float NOT NULL,
   `yextra` float NOT NULL,
   `id_param` int(11) NOT NULL,
-  `lgx` float NOT NULL
+  `igx` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
