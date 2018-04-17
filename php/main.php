@@ -7,18 +7,10 @@
 
 <?php
 require 'dbconnect.php';
-require '../jpgraph/jpgraph.php'
-require '../jpgraph/config.inc.php'
-$testId = 1;
-$statement=$dbCnx->query("SELECT * FROM parametre WHERE id=$testId");
-$parameters=$statement->fetchAll(PDO::FETCH_CLASS,'Parametre');
-$param1 = $parameters[0];
-$tabCambrures1=$param1->generateCambrures();
-foreach ($tabCambrures1 as $key => $value) {
-  $addQuery = $dbCnx->prepare("INSERT INTO cambrure (x, t, f, yintra, yextra, id_param, igx)
-   VALUES ($value->getX(), $value->getTX(), $value->getFX(), $value->getYintra, $value->getYextra, $testId, $value->getIgx())");
-  $addQuery->execute();
-}
+// require '../jpgraph/jpgraph.php';
+// require '../jpgraph/config.inc.php';
+require 'newparameter.php';
+
 // $statement=$dbCnx->query("SELECT * FROM cambrure");
 // $cambrures=$statement->fetchAll(PDO::FETCH_CLASS,'Cambrure');
 

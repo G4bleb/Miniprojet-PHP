@@ -36,7 +36,7 @@ class Cambrure{
   }
 
   public function setYintra($valueYin){
-      $this->yintra=$valueYin;
+    $this->yintra=$valueYin;
   }
 
   public function getYintra(){
@@ -44,7 +44,7 @@ class Cambrure{
   }
 
   public function setYextra($valueYex){
-      $this->yextra=$valueYex;
+    $this->yextra=$valueYex;
   }
 
   public function getYextra(){
@@ -81,42 +81,68 @@ class Parametre{
     return $this->nb_points;
   }
 
-  public function getTmax(){
+  public function getTmax_mm(){
     return $this->tmax_mm;
   }
 
-  public function getFmax(){
+  public function tmax_prc_to_mm(){
+    $this->tmax_mm = ($this->tmax_prc/100) * $this->corde;
+  }
+
+  public function getFmax_mm(){
     return $this->fmax_mm;
+  }
+
+  public function fmax_prc_to_mm(){
+    $this->fmax_mm = ($this->fmax_prc/100) * $this->corde;
   }
 
   public function setCorde($_corde){
     $this->corde = $_corde;
   }
+
   public function setNb_points($_nb_points){
     $this->nb_points = $_nb_points;
   }
+
   public function setTmax_mm($_tmax_mm){
     $this->tmax_mm = $_tmax_mm;
   }
+
   public function setFmax_mm($_fmax_mm){
     $this->fmax_mm = $_fmax_mm;
   }
 
+  public function setTmax_prc($_tmax_prc){
+    $this->tmax_prc = $_tmax_prc;
+  }
+
+  public function setFmax_prc($_fmax_prc){
+    $this->fmax_prc = $_fmax_prc;
+  }
 
   public function generateCambrures(){
-    for ($i=0; $i < $this->getNb_points; $i++) {
+    if (!isset($this->tmax_mm)) {
+      $this->tmax_prc_to_mm();
+    }
+    if (!isset($this->fmax_mm)) {
+      $this->fmax_prc_to_mm();
+    }
+
+    for ($i=0 ; $i <= $this->nb_points ; $i++) {
       $tabCambrures[$i] = new Cambrure();
     }
     //Positionnement de chaque Point x
-    $ecart=$parameters->getCorde()/$parameters->getNb_points();
-    for ($i=0,$length=0;$i<$parameters->getNb_points();$i++) {
+    $ecart=$this->corde/$this->nb_points;
+    for ($i=0, $length = 0 ; $i <= $this->nb_points ; $i++) {
       $tabCambrures[$i]->setX($length);
       $length=$length+$ecart;
     }
+
+    $C=$this->corde;
     foreach ($tabCambrures as $key => $value) {
       $X=$value->getX();
-      $C=$this->corde;
-      $TX= (-1.015*pow($X/$C,4)-2.843*pow($X/$C,3)+3.516*pow($X/$C,2)+1.26*($X/$C)-2.269*sqrt($X/$C))*$parameters->getTmax();
+      $TX= -1*(1.015*pow($X/$C,4)-2.843*pow($X/$C,3)+3.516*pow($X/$C,2)+1.26*($X/$C)-2.969*sqrt($X/$C))*$this->tmax_mm;
       $value->setTx($TX);
     }
 
@@ -144,13 +170,15 @@ class Parametre{
     }
 
     //Calcul de IgX défini par la somme des section rectangulaire bh³/12 de largeur b='$ecart' et h=Tmoy Tmoy entre X et X+dX
+
     $TXP=0;
     foreach ($tabCambrures as $key => $value) {
       $IGX=($TXP+$value->getTX())/2;
       $TXP=$value->getTX();
 
     }
-    foreach ($tabCambrure as $key => $value) {
+    //Igx est une valeur unique pour tout les points
+    foreach ($tabCambrures as $key => $value) {
       $value->setIgx($IGX);
     }
     return $tabCambrures;
