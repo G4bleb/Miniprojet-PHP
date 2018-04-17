@@ -74,12 +74,12 @@ class Parametre{
   private $fic_csv;
 
   public function getId(){
-       return $this->id;
- }
+    return $this->id;
+  }
 
- public function getLibelle(){
-      return $this->libelle;
- }
+  public function getLibelle(){
+    return $this->libelle;
+  }
 
   public function getCorde(){
     return $this->corde;
@@ -106,7 +106,7 @@ class Parametre{
   }
 
   public function getDate(){
-      return $this->date;
+    return $this->date;
   }
 
   public function tmax_prc_to_mm(){
@@ -191,8 +191,6 @@ class Parametre{
 
     //Calcul de IgX défini par la somme des section rectangulaire bh³/12 de largeur b='$ecart' et h=Tmoy Tmoy entre X et X+dX
 
-    $TXP=0;
-    foreach ($tabCambrures as $key => $value) {
-      $IGX=$value->getTX()
-
+  }
+}
 ?>
