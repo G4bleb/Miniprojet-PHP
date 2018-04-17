@@ -173,16 +173,6 @@ class Parametre{
 
     $TXP=0;
     foreach ($tabCambrures as $key => $value) {
-      $IGX=($TXP+$value->getTX())/2;
-      $TXP=$value->getTX();
-
-    }
-    //Igx est une valeur unique pour tout les points
-    foreach ($tabCambrures as $key => $value) {
-      $value->setIgx($IGX);
-    }
-    return $tabCambrures;
-  }
-}
+      $IGX=$value->getTX()
 
 ?>
