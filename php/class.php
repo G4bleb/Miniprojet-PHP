@@ -73,24 +73,44 @@ class Parametre{
   private $fic_img;
   private $fic_csv;
 
+  public function getId(){
+       return $this->id;
+ }
+
+ public function getLibelle(){
+      return $this->libelle;
+ }
+
   public function getCorde(){
     return $this->corde;
   }
 
-  public function getNb_points(){
-    return $this->nb_points;
+  public function getTmax_prc(){
+    return $this->tmax_prc;
   }
 
   public function getTmax_mm(){
     return $this->tmax_mm;
   }
 
-  public function tmax_prc_to_mm(){
-    $this->tmax_mm = ($this->tmax_prc/100) * $this->corde;
+  public function getFmax_prc(){
+    return $this->fmax_prc;
   }
 
   public function getFmax_mm(){
     return $this->fmax_mm;
+  }
+
+  public function getNb_points(){
+    return $this->nb_points;
+  }
+
+  public function getDate(){
+      return $this->date;
+  }
+
+  public function tmax_prc_to_mm(){
+    $this->tmax_mm = ($this->tmax_prc/100) * $this->corde;
   }
 
   public function fmax_prc_to_mm(){
