@@ -117,6 +117,11 @@ class Parametre{
     $this->fmax_mm = ($this->fmax_prc/100) * $this->corde;
   }
 
+  public function setLibelle($_libelle)
+  {
+       $this->libelle = $_libelle;
+  }
+
   public function setCorde($_corde){
     $this->corde = $_corde;
   }

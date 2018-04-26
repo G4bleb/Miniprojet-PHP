@@ -1,13 +1,13 @@
 <?php
      require 'dbconnect.php';
-
-     echo "<h2>Liste des enregistrements :</h2>";
-
+?>
+     <h2>Liste des enregistrements :</h2>
+<?php
      $records = $dbCnx->prepare("SELECT * from parametre");
      $records->execute();
      $recordsList = $records->fetchAll(PDO::FETCH_CLASS, 'Parametre');
-
-     echo "<table border=1 style = 'border-collapse: collapse'>
+?>
+     <table border=1 style = 'border-collapse: collapse'>
           <tr>
             <th>Label</th>
             <th>Corde</th>
@@ -17,8 +17,8 @@
             <th>Fmax(mm)</th>
             <th>Nb Points</th>
             <th>Date</th>
-           <tr/>";
-
+           <tr/>
+<?php
      foreach ($recordsList as $value) {
           $tempId = $value->getId();
           $tempLibelle = $value->getLibelle();
