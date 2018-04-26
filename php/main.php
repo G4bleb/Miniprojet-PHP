@@ -9,13 +9,11 @@
 require 'dbconnect.php';
 // require '../jpgraph/jpgraph.php';
 // require '../jpgraph/config.inc.php';
-require 'newparameter.php';
 
 // $statement=$dbCnx->query("SELECT * FROM cambrure");
 // $cambrures=$statement->fetchAll(PDO::FETCH_CLASS,'Cambrure');
 
 
-//Calcul de T(X) : Formule T(X) = -[1.015(X/C)⁴-2.843(X/C)³+3.516(X/C)²+1.26(X/C)-2.269(X/C)-²]*Tmax
 
 
 

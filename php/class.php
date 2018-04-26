@@ -10,49 +10,48 @@ class Cambrure{
   private $id_param;
   private $igx;
 
-  public function setX($valueX){
-    $this->x=$valueX;
+  public function setX($_X){
+    $this->x=$_X;
   }
 
   public function getX(){
     return $this->x;
   }
 
-  public function setTX($valueTX){
-    $this->t=$valueTX;
+  public function setTX($_TX){
+    $this->t=$_TX;
   }
 
   public function getTX(){
     return $this->t;
   }
 
-  public function setFX($valueFX)
-  {
-    $this->f=$valueFX;
+  public function setFX($_FX){
+    $this->f=$_FX;
   }
 
   public function getFX(){
     return $this->f;
   }
 
-  public function setYintra($valueYin){
-    $this->yintra=$valueYin;
+  public function setYintra($_Yin){
+    $this->yintra=$_Yin;
   }
 
   public function getYintra(){
     return $this->yintra;
   }
 
-  public function setYextra($valueYex){
-    $this->yextra=$valueYex;
+  public function setYextra($_Yex){
+    $this->yextra=$_Yex;
   }
 
   public function getYextra(){
     return $this->yextra;
   }
 
-  public function setIgx($valueIgx){
-    $this->igx=$valueIgx;
+  public function setIgx($_igx){
+    $this->igx=$_igx;
   }
 
   public function getIgx(){
@@ -146,6 +145,12 @@ class Parametre{
     $this->fmax_prc = $_fmax_prc;
   }
 
+  public function createDate()
+  {
+       $paramDate = new DateTime();
+       $this->date = $paramDate->format('Y-m-d');
+  }
+
   public function generateCambrures(){
     if (!isset($this->tmax_mm)) {
       $this->tmax_prc_to_mm();
@@ -195,7 +200,27 @@ class Parametre{
     }
 
     //Calcul de IgX défini par la somme des section rectangulaire bh³/12 de largeur b='$ecart' et h=Tmoy Tmoy entre X et X+dX
+    $base = $this->corde/$this->nb_points;
+    $height = 0;
+    $igx = 0;
+    $lastkey = 0;
+    $lastTx = 0;
 
+    // foreach ($tabCambrures as $key => $value) {
+    //   $currentTx=$value->getTX();
+    //   $height=($lastTx+$currentTx)/2;
+    //   $section=$base*pow($height,3)/12;
+    //   $igx+=$section;
+    //   $lastkey=$key;
+    //   $lastTx=$currentTx;
+    // }
+
+    foreach ($tabCambrures as $key => $value) {
+      $value->setIgx($igx);
+    }
+
+
+    return $tabCambrures;
   }
 }
 ?>
