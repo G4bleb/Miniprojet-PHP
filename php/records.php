@@ -81,7 +81,7 @@ $recordsList = $records->fetchAll(PDO::FETCH_CLASS, 'Parametre');
             ':nb_points'=>$_GET["nb_points"],
             ':stringDate'=>$selectedRecord->getDate(),
             ':id'=>$selectedRecord->getId()));
-            echo "<script>window.location = window.location.pathname;</script>";
+            echo "<script>window.location = window.location.pathname;</script>";//refreshes the page
           }
         } else if($_GET['mode']=='Supprimer'){
           $delete = $dbCnx->prepare("DELETE FROM parametre WHERE id=".$_GET['id']."");
