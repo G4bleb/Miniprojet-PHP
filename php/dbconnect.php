@@ -1,5 +1,5 @@
 <?php
-require 'class.php';
+require_once 'class.php';
 
 $mysqlServerIp = "localhost";
 $mysqlServerPort = "3306";
