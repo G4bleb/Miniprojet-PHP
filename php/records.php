@@ -82,6 +82,19 @@ $recordsList = $records->fetchAll(PDO::FETCH_CLASS, 'Parametre');
             ':stringDate'=>$selectedRecord->getDate(),
             ':id'=>$selectedRecord->getId()));
 
+            $deleteCambrure = $dbCnx->prepare("DELETE FROM cambrure WHERE id_param=".$_GET['id']."");
+            $deleteCambrure->execute();
+
+            $statement=$dbCnx->query("SELECT * FROM parametre WHERE id='".$_GET['id']."'");
+            $parameters=$statement->fetchAll(PDO::FETCH_CLASS,'Parametre');
+            $newParameter = $parameters[0];
+
+            $tabCambrures=$newParameter->generateCambrures();
+
+            $addCambrureQuery = $dbCnx->prepare("INSERT INTO cambrure (x, t, f, yintra, yextra, id_param, igx) VALUES (:x, :t, :f, :yintra, :yextra, :id_param, :igx)");
+            foreach ($tabCambrures as $key => $value) {
+              $addCambrureQuery->execute(array(':x'=>$value->getX(),':t'=>$value->getTX(),':f'=>$value->getFX(),':yintra'=>$value->getYintra(),':yextra'=>$value->getYextra(),':id_param'=>$newParameter->getId(),':igx'=>$value->getIgx()));
+            }
 
             echo "<script>window.location = window.location.pathname;</script>";//refreshes the page
           }

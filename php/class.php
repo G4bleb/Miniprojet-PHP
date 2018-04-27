@@ -206,14 +206,14 @@ class Parametre{
     $lastkey = 0;
     $lastTx = 0;
 
-    // foreach ($tabCambrures as $key => $value) {
-    //   $currentTx=$value->getTX();
-    //   $height=($lastTx+$currentTx)/2;
-    //   $section=$base*pow($height,3)/12;
-    //   $igx+=$section;
-    //   $lastkey=$key;
-    //   $lastTx=$currentTx;
-    // }
+    foreach ($tabCambrures as $key => $value) {
+      $currentTx=$value->getTX();
+      $height=($lastTx+$currentTx)/2;
+      $section=$base*pow($height,3)/12;
+      $igx+=$section;
+      $lastkey=$key;
+      $lastTx=$currentTx;
+    }
 
     foreach ($tabCambrures as $key => $value) {
       $value->setIgx($igx);

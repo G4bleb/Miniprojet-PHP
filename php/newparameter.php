@@ -41,10 +41,7 @@ if (isset($_GET["corde"])) {
   $parameters=$statement->fetchAll(PDO::FETCH_CLASS,'Parametre');
   $newParameter = $parameters[0];
 
-  // var_dump($newParameter);
-
   $tabCambrures=$newParameter->generateCambrures();
-  //var_dump($tabCambrures);
 
   $addCambrureQuery = $dbCnx->prepare("INSERT INTO cambrure (x, t, f, yintra, yextra, id_param, igx) VALUES (:x, :t, :f, :yintra, :yextra, :id_param, :igx)");
   foreach ($tabCambrures as $key => $value) {
