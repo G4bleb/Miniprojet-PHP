@@ -35,7 +35,7 @@ $recordsList = $records->fetchAll(PDO::FETCH_CLASS, 'Parametre');
       echo "<td>".$value->getFmax_mm()."</td>";
       echo "<td>".$value->getNb_points()."</td>";
       echo "<td>".$value->getDate()."</td>";
-      echo "<td><form action='details.php' method='get'><input type='hidden' name='id' value='".$value->getId()."'><input type='submit' name='mode' value='Details' formtarget='_blank'></form>";
+      echo "<td><form action='details.php' method='get'><input type='hidden' name='id' value='".$value->getId()."'><input type='submit' value='Details' formtarget='_blank'></form>";
       echo "<td><form action='records.php' method='get'><input type='hidden' name='id' value='".$value->getId()."'><input type='submit' name='mode' value='Editer'></form>";
       echo "<td><form onsubmit='return confirmer()' action='records.php' method='get'><input type='hidden' name='id' value='".$value->getId()."'><input type='submit' name='mode' value='Supprimer'></form>";
     }
@@ -76,7 +76,7 @@ $recordsList = $records->fetchAll(PDO::FETCH_CLASS, 'Parametre');
             ':corde'=>$_GET["corde"],
             ':tmax_prc'=>$_GET["tmax_prc"],
             ':tmax_mm'=>$selectedRecord->getTmax_mm(),
-            ':fmax_prc'=>$_GET["tmax_prc"],
+            ':fmax_prc'=>$_GET["fmax_prc"],
             ':fmax_mm'=>$selectedRecord->getFmax_mm(),
             ':nb_points'=>$_GET["nb_points"],
             ':stringDate'=>$selectedRecord->getDate(),
