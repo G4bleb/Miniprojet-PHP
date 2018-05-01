@@ -21,7 +21,11 @@ try {
      $filePath = "../exports/".$fileName;
 
      //Ecriture du fichier
+<<<<<<< HEAD
      $fp = fopen($filePath, "w")or die();
+=======
+     $fp = fopen($filePath, "w") or die();
+>>>>>>> 86f43caface063988f61ffb9cbf5eb0197de0948
      foreach ($detailsListArray as $fields) {
           if (is_object($fields)) {
                $fields = (array) $fields;

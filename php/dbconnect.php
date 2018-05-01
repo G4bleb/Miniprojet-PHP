@@ -1,7 +1,7 @@
 <?php
 require_once 'class.php';
 
-/* Connection à la BDD */
+/* Connexion à la BDD */
 
 $mysqlServerIp = "localhost";
 $mysqlServerPort = "3306";
