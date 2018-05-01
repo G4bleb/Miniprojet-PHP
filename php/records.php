@@ -8,6 +8,7 @@ function confirmer() {
 require_once 'dbconnect.php';
 ?>
 <h2>Liste des enregistrements :</h2>
+<a href="../">Retour à l'accueil</a>
 <?php
 $records = $dbCnx->prepare("SELECT * FROM parametre");
 $records->execute();
@@ -96,6 +97,8 @@ $recordsList = $records->fetchAll(PDO::FETCH_CLASS, 'Parametre');
               $addCambrureQuery->execute(array(':x'=>$value->getX(),':t'=>$value->getTX(),':f'=>$value->getFX(),':yintra'=>$value->getYintra(),':yextra'=>$value->getYextra(),':id_param'=>$newParameter->getId(),':igx'=>$value->getIgx()));
             }
 
+            $newParameter->generateFiles($tabCambrures);
+
             echo "<script>window.location = window.location.pathname;</script>";//refreshes the page
           }
 
@@ -105,6 +108,8 @@ $recordsList = $records->fetchAll(PDO::FETCH_CLASS, 'Parametre');
           $deleteCambrure->execute();
           $deleteParam = $dbCnx->prepare("DELETE FROM parametre WHERE id=".$_GET['id']."");
           $deleteParam->execute();
+          unlink("../graphs/".$_GET['id'].".png");
+          unlink("../exports/".$_GET['id'].".csv");
           echo "<script>window.location = window.location.pathname;</script>";//refreshes the page
         }
       }

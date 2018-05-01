@@ -1,6 +1,5 @@
 <?php
 require_once 'dbconnect.php';
-require_once 'graph.php';
 
 $selectedParam = $dbCnx->prepare("SELECT * FROM parametre WHERE id=:id");
 $selectedParam->execute(array(':id'=>$_GET['id']));
@@ -36,9 +35,10 @@ echo "<h2>Parametre \"".$selectedParamArray[0]->getLibelle()."\" :</h2>";
       ?>
 
       <?php
-      echo "<img src='graph.php?id_param=".$_GET['id']."' />";
+      // echo "<img src='graph.php?id_param=".$_GET['id']."' />";
+      echo "<img src='../graphs/".$_GET['id'].".png' />";
 
-      echo "<form action='export.php' method='get'>
+      echo "<form action='sendexport.php' method='get'>
       <input type='hidden' name='id' value='".$_GET['id']."'>
       <input type='submit' value='Exporter en CSV' target='_blank'>
       </form>";

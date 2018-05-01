@@ -1,6 +1,8 @@
 <?php
 require_once 'dbconnect.php';
 ?>
+<h2>Ajout d'un paramètre</h2>
+<a href="../">Retour à l'accueil</a>
 
 <!--
 ********************************************************************************
@@ -20,7 +22,7 @@ AJOUT PAR FORMULAIRE D'UNE NOUVELLE CAMBRURE
 <?php
 
 
-if (isset($_GET["corde"])) {
+if (isset($_GET["libelle"]) && isset($_GET["corde"]) && isset($_GET["nb_points"]) && isset($_GET["tmax_prc"]) && isset($_GET["fmax_prc"])) {
   $newParameter = new Parametre();
 
   $newParameter->setLibelle($_GET["libelle"]);
@@ -47,5 +49,10 @@ if (isset($_GET["corde"])) {
   foreach ($tabCambrures as $key => $value) {
     $addCambrureQuery->execute(array(':x'=>$value->getX(),':t'=>$value->getTX(),':f'=>$value->getFX(),':yintra'=>$value->getYintra(),':yextra'=>$value->getYextra(),':id_param'=>$newParameter->getId(),':igx'=>$value->getIgx()));
   }
+
+  $newParameter->generateFiles($tabCambrures);
+  $fileNamesQuery = $dbCnx->prepare("UPDATE parametre SET fic_img=:fic_img, fic_csv=:fic_csv WHERE id=:id");
+  $fileNamesQuery->execute(array(':fic_img'=>$newParameter->id().'.png', ':fic_csv'=>$newParameter->id().'.csv', ':id'=>$newParameter->id()));
+
 }
 ?>

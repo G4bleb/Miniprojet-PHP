@@ -222,5 +222,12 @@ class Parametre{
 
     return $tabCambrures;
   }
+
+  public function generateFiles($tabCambrures)  {
+    include_once "graph.php";
+    include_once "export.php";
+    $this->fic_img=$this->id.".png";
+    $this->fic_csv=$this->id.".csv";
+  }
 }
 ?>
