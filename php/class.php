@@ -224,6 +224,7 @@ class Parametre{
   }
 
   public function generateFiles($tabCambrures)  {
+    require_once 'dbconnect.php';
     include_once "graph.php";
     include_once "export.php";
     $this->fic_img=$this->id.".png";

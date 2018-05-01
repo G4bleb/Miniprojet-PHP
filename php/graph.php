@@ -1,5 +1,5 @@
 <?php
-require 'dbconnect.php';
+require_once 'dbconnect.php';
 require_once '../jpgraph/jpgraph.php';
 require_once '../jpgraph/jpgraph_line.php';
 
@@ -24,7 +24,7 @@ try {
   }
   $nb_label=$i;
   $i=0;
-  error_log("PEF");
+
   // Setup the graph
   $graph = new Graph(1200,600);
   $graph->SetScale("textlin");
