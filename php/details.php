@@ -4,7 +4,7 @@ require_once 'dbconnect.php';
 /* Ce code permet d'afficher les details d'un parametre */
 
 
-//Récupération des données du paramètre sélectionné
+//Récupération des données du paramètre sélectionné et passage en objet Parametre
 $selectedParam = $dbCnx->prepare("SELECT * FROM parametre WHERE id=:id");
 $selectedParam->execute(array(':id'=>$_GET['id']));
 $selectedParamArray = $selectedParam->fetchAll(PDO::FETCH_CLASS, 'Parametre');
@@ -41,7 +41,7 @@ echo "<tr>
 </table>";
 
 
-//Récupération des données sur la cambrure correspondant au paramètre choisi
+//Récupération des données sur la cambrure correspondant au paramètre choisi et passage en objet Cambrure
 $detailsList = $dbCnx->prepare("SELECT * FROM cambrure WHERE id_param=:id");
 $detailsList->execute(array(':id'=>$_GET['id']));
 $detailsListArray = $detailsList->fetchAll(PDO::FETCH_CLASS, 'Cambrure');
