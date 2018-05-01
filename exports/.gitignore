@@ -1,0 +1,6 @@
+#Fichier pour conserver le dossier vide
+
+#Tout ignorer dans ce repertoire
+*
+#Sauf ce fichier
+!.gitignore
