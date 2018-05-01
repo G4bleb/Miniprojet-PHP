@@ -6,6 +6,7 @@ $selectedParam->execute(array(':id'=>$_GET['id']));
 $selectedParamArray = $selectedParam->fetchAll(PDO::FETCH_CLASS, 'Parametre');
 echo "<h2>Parametre \"".$selectedParamArray[0]->getLibelle()."\" :</h2>";
 ?>
+<style>body {font-family: Sans-Serif;}</style>
 <table border=1 style = 'border-collapse: collapse'>
   <tr>
     <th>Corde</th>

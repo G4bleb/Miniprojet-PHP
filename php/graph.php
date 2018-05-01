@@ -10,9 +10,11 @@ if (isset($_GET['id_param'])) {
   $id_param=$_GET['id_param'];
 }
 try {
+
   $statement=$dbCnx->query("SELECT * FROM cambrure WHERE id_param=".$id_param);
   $tabCambrures=$statement->fetchAll(PDO::FETCH_CLASS,'Cambrure');
   $i=0;
+
   foreach ($tabCambrures as $key => $value) {
     $tabX[$i]=$value->getX();
     $tabYintra[$i]=$value->getYintra();
@@ -22,7 +24,7 @@ try {
   }
   $nb_label=$i;
   $i=0;
-
+  error_log("PEF");
   // Setup the graph
   $graph = new Graph(1200,600);
   $graph->SetScale("textlin");
@@ -64,11 +66,6 @@ try {
   $p3->SetLegend('Cambrure');
 
   $graph->xaxis->scale->SetGrace(10);
-  // Create the third line
-  // $p3 = new LinePlot($datay3);
-  // $graph->Add($p3);
-  // $p3->SetColor("#FF1493");
-  // $p3->SetLegend('Line 3');
 
   $graph->legend->SetFrameWeight(1);
 

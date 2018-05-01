@@ -1,6 +1,7 @@
 <?php
 require_once 'dbconnect.php';
 ?>
+<style>body {font-family: Sans-Serif;}</style>
 <h2>Ajout d'un paramètre</h2>
 <a href="../">Retour à l'accueil</a>
 
@@ -12,7 +13,7 @@ AJOUT PAR FORMULAIRE D'UNE NOUVELLE CAMBRURE
 
 <form action="newparameter.php" method="GET">
   Nom ? <input type="text" name="libelle" value=""><br>
-  Taille de la corde ?  <input type="text" name="corde" value=""><br>
+  Taille de la corde en mm ?  <input type="text" name="corde" value=""><br>
   Nombre de points ? <input type="text" name="nb_points" value=""><br>
   Epaisseur max en % ?  <input type="text" name="tmax_prc" value=""><br>
   Cambrure max en % ? <input type="text" name="fmax_prc" value=""><br>
@@ -37,7 +38,7 @@ if (isset($_GET["libelle"]) && isset($_GET["corde"]) && isset($_GET["nb_points"]
   // var_dump($newParameter);
 
   $addParameterQuery = $dbCnx->prepare("INSERT INTO parametre (libelle, corde, tmax_prc, tmax_mm, fmax_prc, fmax_mm, nb_points, date, fic_img, fic_csv) VALUES (:libelle, :corde, :tmax_prc, :tmax_mm, :fmax_prc, :fmax_mm, :nb_points, :date, NULL, NULL)");
-  $addParameterQuery->execute(array(':libelle'=>$_GET["libelle"],':corde'=>$_GET["corde"],':tmax_prc'=>$_GET["tmax_prc"],':tmax_mm'=>$newParameter->getTmax_mm(),':fmax_prc'=>$_GET["tmax_prc"],':fmax_mm'=>$newParameter->getFmax_mm(),':nb_points'=>$_GET["nb_points"],':date'=>$newParameter->getDate()));
+  $addParameterQuery->execute(array(':libelle'=>$_GET["libelle"],':corde'=>$_GET["corde"],':tmax_prc'=>$_GET["tmax_prc"],':tmax_mm'=>$newParameter->getTmax_mm(),':fmax_prc'=>$_GET["fmax_prc"],':fmax_mm'=>$newParameter->getFmax_mm(),':nb_points'=>$_GET["nb_points"],':date'=>$newParameter->getDate()));
 
   $statement=$dbCnx->query("SELECT * FROM parametre WHERE libelle='".$_GET['libelle']."'");
   $parameters=$statement->fetchAll(PDO::FETCH_CLASS,'Parametre');

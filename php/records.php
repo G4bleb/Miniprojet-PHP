@@ -3,7 +3,7 @@ function confirmer() {
   return confirm("Confirmer la suppression ?");
 }
 </script>
-
+<style>body {font-family: Sans-Serif;}</style>
 <?php
 require_once 'dbconnect.php';
 ?>
