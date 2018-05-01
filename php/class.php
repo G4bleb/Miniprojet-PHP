@@ -248,5 +248,15 @@ class Parametre{
 
           return $tabCambrures;
      }
+
+     //Génération du fichier d'export en csv
+     public function generateFiles($tabCambrures)  {
+          require 'dbconnect.php';
+          include_once "graph.php";
+          include_once "export.php";
+          $this->fic_img=$this->id.".png";
+          $this->fic_csv=$this->id.".csv";
+     }
 }
+
 ?>

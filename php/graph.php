@@ -11,7 +11,7 @@ if (isset($_GET['id_param'])) {
 }
 try {
 
-  $statement=$dbCnx->query("SELECT * FROM cambrure WHERE id_param=".$id_param);
+  $statement=$dbCnx->query("SELECT * FROM cambrure WHERE id_param=".$id_param."");
   $tabCambrures=$statement->fetchAll(PDO::FETCH_CLASS,'Cambrure');
   $i=0;
 
