@@ -52,16 +52,16 @@ $recordsList = $records->fetchAll(PDO::FETCH_CLASS, 'Parametre');
                     <td>".$value->getFmax_prc()."</td>
                     <td>".$value->getFmax_mm()."</td>
                     <td>".$value->getNb_points()."</td>
-                    <td>".$value->getDate()."</td>"
+                    <td>".$value->getDate()."</td>";
 
                     //Bouton Details qui appelle le fichier details.php
-                    "<td><form action='details.php' method='get'><input type='hidden' name='id' value='".$value->getId()."'><input type='submit' value='Details' formtarget='_blank'></form>"
+                    echo "<td><form action='details.php' method='get'><input type='hidden' name='id' value='".$value->getId()."'><input type='submit' value='Details' formtarget='_blank'></form>";
 
                     //Bouton Edition (effets plus bas)
-                    "<td><form action='records.php' method='get'><input type='hidden' name='id' value='".$value->getId()."'><input type='submit' name='mode' value='Editer'></form>"
+                    echo "<td><form action='records.php' method='get'><input type='hidden' name='id' value='".$value->getId()."'><input type='submit' name='mode' value='Editer'></form>";
 
                     //Bouton Supprimer (effets plus bas)
-                    "<td><form onsubmit='return confirmer()' action='records.php' method='get'><input type='hidden' name='id' value='".$value->getId()."'><input type='submit' name='mode' value='Supprimer'></form>
+                    echo "<td><form onsubmit='return confirmer()' action='records.php' method='get'><input type='hidden' name='id' value='".$value->getId()."'><input type='submit' name='mode' value='Supprimer'></form>
                </tr>";
      }
 
