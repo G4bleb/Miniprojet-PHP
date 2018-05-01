@@ -61,7 +61,7 @@ try {
      $graph->xgrid->Show();
      $graph->xgrid->SetLineStyle("solid");
      $graph->xaxis->SetTickLabels($tabX);
-     $graph->xaxis->SetTextLabelInterval($nb_label/20);
+     $graph->xaxis->SetTextLabelInterval(intval($nb_label/20));
      $graph->xgrid->SetColor('#E3E3E3');
 
 
