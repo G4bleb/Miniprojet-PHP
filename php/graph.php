@@ -89,6 +89,6 @@ try {
      // Output line
      $graph->Stroke("../graphs/".$id_param.".png");
 } catch (Exception $e) {
-     error_log("erreur dans graph.php : id_param est il bien passé ? Exception : ".$e->getMessage());
+     error_log("erreur dans graph.php : id_param est il bien passe ? Exception : ".$e->getMessage());
 }
 ?>
