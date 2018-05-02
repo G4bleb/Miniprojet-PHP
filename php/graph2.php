@@ -4,10 +4,10 @@
   require_once '../jpgraph/jpgraph_line.php';
     $i=1;
     $reponse=$dbCnx->query("SELECT * FROM cambrure");
-    //Les requêtes ne fonctionne pas
-    //On souhaite créé l'équivalent d'un foreach(cambrure) qui irait récupéré le IGX ainsi que Tmax et fmax_mm
-    //L'objectif étant de créé un Graph dynamique où Igx en fonction de Fmax Représente la rigidité et Igx/tmax_mm la solidité
-    //Seul le while change comparé à graph.php l'ajout des tableaux en jpgraph reste le même
+    //Les requêtes ne fonctionnent pas
+    //On souhaite créer l'équivalent d'un foreach(cambrure) qui irait récupérer le IGX ainsi que Tmax et fmax_mm
+    //L'objectif étant de créer un Graph dynamique où Igx en fonction de Fmax Représente la rigidité et Igx/tmax_mm la solidité
+    //Seul le while change comparé à graph.php. L'ajout des tableaux en jpgraph reste le même
     while($donnees=$reponse->fetch()){
       $statement=$dbCnx->query("SELECT * FROM parametre WHERE id=".$i);
       $tabParametres=$statement->fetchAll(PDO::FETCH_CLASS,'Parametre');
