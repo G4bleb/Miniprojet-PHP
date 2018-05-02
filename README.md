@@ -20,7 +20,7 @@ LOGICIELS NECESSAIRES :
   ◦ Serveur web pouvant exécuter du PHP et jpgraph  
 
 INSTRUCTIONS D'UTLISATION :  
-• Ajouter le dossier du projet dans les fichiers du serveur web
+• Ajouter le dossier du projet dans les fichiers du serveur web  
 • Créer dans la base de données un utilisateur 'user6' dont le mot de passe est 'user6'  
-  ◦ Créer avec lui une base de données nommée 'user6', sur laquelle il possède les droits
-  ◦ Exécuter sql/user6.sql dans MySQL
+  ◦ Créer avec lui une base de données nommée 'user6', sur laquelle il possède les droits  
+  ◦ Exécuter sql/user6.sql dans MySQL  
