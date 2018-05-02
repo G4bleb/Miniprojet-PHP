@@ -249,11 +249,12 @@ class Parametre{
     return $tabCambrures;
   }
 
-  //Génération du fichier d'export en csv
+  //Génération des fichiers
   public function generateFiles($tabCambrures)  {
     require 'dbconnect.php';
-    include_once "graph.php";
-    include_once "export.php";
+    include_once "graph.php";//Génération du fichier image
+    include_once "export.php";//Génération du fichier csv
+    //Ajout des noms de fichiers à l'objet
     $this->fic_img=$this->id.".png";
     $this->fic_csv=$this->id.".csv";
   }
